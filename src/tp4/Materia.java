@@ -2,14 +2,6 @@ package tp4;
 
 public class Materia {
 
-    static boolean contains(Materia nueva) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    static void add(Materia nueva) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     int idMateria;
     String nombreDeMateria;
     int anio;

@@ -4,6 +4,7 @@
  */
 package tp4;
 
+import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author marti
  */
 public class Escritorio extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Escritorio.class.getName());
 
     /**
@@ -73,7 +74,7 @@ public class Escritorio extends javax.swing.JFrame {
         mnuSalir = new javax.swing.JMenu();
         mitSalir = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -223,9 +224,9 @@ public class Escritorio extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addGap(100, 100, 100)
+                .addGap(91, 91, 91)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -446,51 +447,53 @@ public class Escritorio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void guardarAlumno(){
-        
-        try{
-        String newLegajo = txtLegajo.getText().trim();
-        String newApellido = txtApellido.getText().trim();
-        String newNombre = txtNombre.getText().trim();
-        
-        if (newLegajo.isEmpty() || newApellido.isEmpty() || newNombre.isEmpty()){
-            JOptionPane.showMessageDialog(this, 
-                    "Completa todos los campos",
-                    "Atencion",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        int legajo =Integer.parseInt(newLegajo);
-        Alumno nuevo = new Alumno(legajo, newApellido, newNombre);
-        
-        if(Alumno.contain(nuevo)){
-          JOptionPane.showMessageDialog(this,
-                  "Ya hay un alumno con este legajo",
-                  "Atencion",
-                  JOptionPane.WARNING_MESSAGE);
-          return;
-        }
-        Alumno.add(nuevo);
-        JOptionPane.showMessageDialog(this,
-                "Alumno guardado exitosamente");
-                limpiarCampos();
-        }catch(NumberFormatException e){
+    private void guardarAlumno() {
+
+        try {
+            String newLegajo = txtLegajo.getText().trim();
+            String newApellido = txtApellido.getText().trim();
+            String newNombre = txtNombre.getText().trim();
+
+            if (newLegajo.isEmpty() || newApellido.isEmpty() || newNombre.isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "Completa todos los campos",
+                        "Atencion",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            int legajo = Integer.parseInt(newLegajo);
+            HashSet<Alumno> alumnos = new HashSet<>();
+            Alumno nuevo = new Alumno(legajo, newApellido, newNombre);
+
+            if (alumnos.contains(nuevo)) {
+                JOptionPane.showMessageDialog(this,
+                        "Ya hay un alumno con este legajo",
+                        "Atencion",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            alumnos.add(nuevo);
+            JOptionPane.showMessageDialog(this,
+                    "Alumno guardado exitosamente");
+            limpiarCampos();
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
                     "El legajo debe ser un número",
-                    "Error",JOptionPane.ERROR_MESSAGE);
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    private void limpiarCampos(){
+
+    private void limpiarCampos() {
         txtLegajo.setText("");
         txtApellido.setText("");
         txtNombre.setText("");
         txtCodigo.setText("");
         txtNombreMateria.setText("");
         txtAnio.setText("");
-        
+
     }
-        
-        private void guardarMateria() {
+
+    private void guardarMateria() {
         try {
             String codigoTexto = txtCodigo.getText().trim();
             String nombre = txtNombreMateria.getText().trim();
@@ -505,15 +508,17 @@ public class Escritorio extends javax.swing.JFrame {
             int idMateria = Integer.parseInt(codigoTexto);
             int anio = Integer.parseInt(anioTexto);
 
+            HashSet<Materia> materias = new HashSet<>();
+
             Materia nueva = new Materia(idMateria, nombre, anio);
 
-            if (Materia.contains(nueva)) {
+            if (materias.contains(nueva)) {
                 JOptionPane.showMessageDialog(this,
                         "Ya existe una materia con ese código.", "Atención", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
-            Materia.add(nueva);
+            materias.add(nueva);
             JOptionPane.showMessageDialog(this, "Materia guardada correctamente.");
             limpiarCampos();
 
@@ -522,7 +527,7 @@ public class Escritorio extends javax.swing.JFrame {
                     "El código y el año deben ser numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         guardarAlumno();
@@ -562,13 +567,14 @@ public class Escritorio extends javax.swing.JFrame {
 
     private void mitRegistraseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitRegistraseActionPerformed
         // TODO add your handling code here:
+        JIFformInscripcion.setVisible(true);
     }//GEN-LAST:event_mitRegistraseActionPerformed
-    
+
     private void mitAgregarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitAgregarAlumnoActionPerformed
         // TODO add your handling code here:
         JIFformAlumno.setVisible(true);
         //escritorio.add(JIFformAlumno);
-         escritorio.moveToFront(JIFformAlumno);
+        escritorio.moveToFront(JIFformAlumno);
     }//GEN-LAST:event_mitAgregarAlumnoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -584,9 +590,9 @@ public class Escritorio extends javax.swing.JFrame {
 
     private void mitAgregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitAgregarMateriaActionPerformed
         // TODO add your handling code here:
-         JIFformMaterias.setVisible(true);
-         escritorio.moveToFront(JIFformMaterias);
-         
+        JIFformMaterias.setVisible(true);
+        escritorio.moveToFront(JIFformMaterias);
+
     }//GEN-LAST:event_mitAgregarMateriaActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -596,8 +602,9 @@ public class Escritorio extends javax.swing.JFrame {
 
     private void btnFormInscripcionSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormInscripcionSalirActionPerformed
         // TODO add your handling code here:
+        JIFformInscripcion.setVisible(false);
     }//GEN-LAST:event_btnFormInscripcionSalirActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -621,7 +628,7 @@ public class Escritorio extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Escritorio().setVisible(true));
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
