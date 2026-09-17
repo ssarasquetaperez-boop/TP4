@@ -13,6 +13,9 @@ import javax.swing.JOptionPane;
  */
 public class Escritorio extends javax.swing.JFrame {
 
+    HashSet<Alumno> alumnos = new HashSet<>();
+    HashSet<Materia> materias = new HashSet<>();
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Escritorio.class.getName());
 
     /**
@@ -462,20 +465,24 @@ public class Escritorio extends javax.swing.JFrame {
                 return;
             }
             int legajo = Integer.parseInt(newLegajo);
-            HashSet<Alumno> alumnos = new HashSet<>();
             Alumno nuevo = new Alumno(legajo, newApellido, newNombre);
 
-            if (alumnos.contains(nuevo)) {
-                JOptionPane.showMessageDialog(this,
-                        "Ya hay un alumno con este legajo",
-                        "Atencion",
-                        JOptionPane.WARNING_MESSAGE);
-                return;
+            for (Alumno n : alumnos) {
+                if (n.getNumLegajo() == legajo) {
+                    JOptionPane.showMessageDialog(this,
+                            "Ya hay un alumno con este legajo",
+                            "Atencion",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
             }
+
             alumnos.add(nuevo);
             JOptionPane.showMessageDialog(this,
                     "Alumno guardado exitosamente");
             limpiarCampos();
+            cmbAlumnos.addItem(nuevo);
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
                     "El legajo debe ser un número",
@@ -508,25 +515,26 @@ public class Escritorio extends javax.swing.JFrame {
             int idMateria = Integer.parseInt(codigoTexto);
             int anio = Integer.parseInt(anioTexto);
 
-            HashSet<Materia> materias = new HashSet<>();
-
             Materia nueva = new Materia(idMateria, nombre, anio);
-
-            if (materias.contains(nueva)) {
-                JOptionPane.showMessageDialog(this,
-                        "Ya existe una materia con ese código.", "Atención", JOptionPane.WARNING_MESSAGE);
-                return;
+            for (Materia mat : materias) {
+                if (mat.getIdMateria() == idMateria) {
+                    JOptionPane.showMessageDialog(this,
+                            "Ya existe una materia con ese código.", "Atención", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
             }
 
             materias.add(nueva);
             JOptionPane.showMessageDialog(this, "Materia guardada correctamente.");
             limpiarCampos();
+            cmbMaterias.addItem(nueva);
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this,
                     "El código y el año deben ser numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
@@ -641,8 +649,8 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarMateria;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> cmbAlumnos;
-    private javax.swing.JComboBox<String> cmbMaterias;
+    private javax.swing.JComboBox<Alumno> cmbAlumnos;
+    private javax.swing.JComboBox<Materia> cmbMaterias;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -675,4 +683,5 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreMateria;
     // End of variables declaration//GEN-END:variables
+
 }
