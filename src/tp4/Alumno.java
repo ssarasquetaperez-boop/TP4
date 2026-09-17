@@ -48,4 +48,9 @@ public class Alumno {
         this.materias = materias;
     }
 
+    @Override
+    public String toString() {
+        return numLegajo + "-" + apellido + "-" + nombre;
+    }
+
 }
