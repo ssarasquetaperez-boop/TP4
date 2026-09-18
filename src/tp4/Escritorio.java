@@ -374,7 +374,7 @@ public class Escritorio extends javax.swing.JFrame {
         btnJIFformInscriptosSalir.setText("Salir");
         btnJIFformInscriptosSalir.addActionListener(this::btnJIFformInscriptosSalirActionPerformed);
 
-        jScrollPane2.setToolTipText("asda,asd");
+        jScrollPane2.setToolTipText("");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
