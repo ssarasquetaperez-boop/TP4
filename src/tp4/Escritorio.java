@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package tp4;
+
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -12,10 +9,11 @@ import javax.swing.JOptionPane;
  * @author marti
  */
 public class Escritorio extends javax.swing.JFrame {
+
     HashSet<Alumno> alumnos = new HashSet<>();
     HashSet<Materia> materias = new HashSet<>();
 
-    private DefaultTableModel modelo = new DefaultTableModel();    
+    private DefaultTableModel modelo = new DefaultTableModel();
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Escritorio.class.getName());
 
@@ -69,10 +67,9 @@ public class Escritorio extends javax.swing.JFrame {
         cmbAlumnos = new javax.swing.JComboBox<>();
         btnFormInscripcionInscribirse = new javax.swing.JButton();
         btnFormInscripcionSalir = new javax.swing.JButton();
-        JIFformInscriptos = new javax.swing.JInternalFrame();
+        JIFformateriasInscriptas = new javax.swing.JInternalFrame();
         pnlFormInscriptos = new javax.swing.JPanel();
         cmbFormAlumnos = new javax.swing.JComboBox<>();
-        lblFormInscriptosMaterias = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnJIFformInscriptosSalir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -363,18 +360,15 @@ public class Escritorio extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        JIFformInscriptos.setTitle("Formulario Inscriptos");
-        JIFformInscriptos.setVisible(true);
+        JIFformateriasInscriptas.setToolTipText("");
+        JIFformateriasInscriptas.setVisible(true);
 
         cmbFormAlumnos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbFormAlumnos.addActionListener(this::cmbFormAlumnosActionPerformed);
 
-        lblFormInscriptosMaterias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblFormInscriptosMaterias.setText("Materias ");
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Formulario de Inscriptos");
+        jLabel2.setText("Materias Inscriptas");
         jLabel2.setName(""); // NOI18N
 
         btnJIFformInscriptosSalir.setText("Salir");
@@ -401,15 +395,11 @@ public class Escritorio extends javax.swing.JFrame {
             pnlFormInscriptosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlFormInscriptosLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(pnlFormInscriptosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(18, 18, 18)
+                .addGroup(pnlFormInscriptosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnJIFformInscriptosSalir)
-                    .addGroup(pnlFormInscriptosLayout.createSequentialGroup()
-                        .addComponent(lblFormInscriptosMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlFormInscriptosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmbFormAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2))))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                    .addComponent(cmbFormAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlFormInscriptosLayout.setVerticalGroup(
@@ -417,31 +407,26 @@ public class Escritorio extends javax.swing.JFrame {
             .addGroup(pnlFormInscriptosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGroup(pnlFormInscriptosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlFormInscriptosLayout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(lblFormInscriptosMaterias))
-                    .addGroup(pnlFormInscriptosLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(cmbFormAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
+                .addGap(59, 59, 59)
+                .addComponent(cmbFormAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnJIFformInscriptosSalir))
         );
 
-        javax.swing.GroupLayout JIFformInscriptosLayout = new javax.swing.GroupLayout(JIFformInscriptos.getContentPane());
-        JIFformInscriptos.getContentPane().setLayout(JIFformInscriptosLayout);
-        JIFformInscriptosLayout.setHorizontalGroup(
-            JIFformInscriptosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JIFformInscriptosLayout.createSequentialGroup()
+        javax.swing.GroupLayout JIFformateriasInscriptasLayout = new javax.swing.GroupLayout(JIFformateriasInscriptas.getContentPane());
+        JIFformateriasInscriptas.getContentPane().setLayout(JIFformateriasInscriptasLayout);
+        JIFformateriasInscriptasLayout.setHorizontalGroup(
+            JIFformateriasInscriptasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JIFformateriasInscriptasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlFormInscriptos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
-        JIFformInscriptosLayout.setVerticalGroup(
-            JIFformInscriptosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JIFformInscriptosLayout.createSequentialGroup()
+        JIFformateriasInscriptasLayout.setVerticalGroup(
+            JIFformateriasInscriptasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JIFformateriasInscriptasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlFormInscriptos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -450,7 +435,7 @@ public class Escritorio extends javax.swing.JFrame {
         escritorio.setLayer(JIFformAlumno, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(JIFformMaterias, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(JIFformInscripcion, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(JIFformInscriptos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(JIFformateriasInscriptas, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -458,7 +443,7 @@ public class Escritorio extends javax.swing.JFrame {
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addGap(189, 189, 189)
-                .addComponent(JIFformInscriptos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JIFformateriasInscriptas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(143, Short.MAX_VALUE))
             .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(escritorioLayout.createSequentialGroup()
@@ -480,7 +465,7 @@ public class Escritorio extends javax.swing.JFrame {
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
-                .addComponent(JIFformInscriptos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JIFformateriasInscriptas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(118, Short.MAX_VALUE))
             .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(escritorioLayout.createSequentialGroup()
@@ -704,7 +689,7 @@ public class Escritorio extends javax.swing.JFrame {
         JIFformAlumno.setVisible(false);
         JIFformMaterias.setVisible(false);
         JIFformInscripcion.setVisible(false);
-        JIFformInscriptos.setVisible(false);
+        JIFformateriasInscriptas.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void txtLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLegajoActionPerformed
@@ -730,12 +715,12 @@ public class Escritorio extends javax.swing.JFrame {
 
     private void mitInscriptosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitInscriptosActionPerformed
         // TODO add your handling code here:
-        JIFformInscriptos.setVisible(true);
+        JIFformateriasInscriptas.setVisible(true);
     }//GEN-LAST:event_mitInscriptosActionPerformed
 
     private void btnJIFformInscriptosSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJIFformInscriptosSalirActionPerformed
         // TODO add your handling code here:
-        JIFformInscriptos.setVisible(false);
+        JIFformateriasInscriptas.setVisible(false);
     }//GEN-LAST:event_btnJIFformInscriptosSalirActionPerformed
 
     private void btnFormInscripcionInscribirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormInscripcionInscribirseActionPerformed
@@ -771,12 +756,13 @@ public class Escritorio extends javax.swing.JFrame {
         // TODO add your handling code here:
         Alumno seleccionado = (Alumno) cmbFormAlumnos.getSelectedItem();
         modelo.setRowCount(0);
-        
+
         if (seleccionado != null) {
-            for (Materia m : seleccionado.getMaterias()){
+            for (Materia m : seleccionado.getMaterias()) {
                 cargarDatos(m);
             }
         }
+        
 
 
     }//GEN-LAST:event_cmbFormAlumnosActionPerformed
@@ -804,14 +790,14 @@ public class Escritorio extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Escritorio().setVisible(true));
-       
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JInternalFrame JIFformAlumno;
     private javax.swing.JInternalFrame JIFformInscripcion;
-    private javax.swing.JInternalFrame JIFformInscriptos;
     private javax.swing.JInternalFrame JIFformMaterias;
+    private javax.swing.JInternalFrame JIFformateriasInscriptas;
     private javax.swing.JButton btnFormInscripcionInscribirse;
     private javax.swing.JButton btnFormInscripcionSalir;
     private javax.swing.JButton btnGuardar;
@@ -835,7 +821,6 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblApellido;
-    private javax.swing.JLabel lblFormInscriptosMaterias;
     private javax.swing.JLabel lblLegajo;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JMenuItem mitAgregarAlumno;
@@ -861,15 +846,16 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreMateria;
     // End of variables declaration//GEN-END:variables
-    private void armarColumno(){
+    private void armarColumno() {
         modelo.addColumn("Codigo");
         modelo.addColumn("Materia");
         modelo.addColumn("Año");
         jTable1.setModel(modelo);
     }
-    private void cargarDatos(Materia materia){
-        
-        modelo.addRow(new Object[]{materia.getIdMateria(),materia.getNombreDeMateria(),materia.getAnio()});
+
+    private void cargarDatos(Materia materia) {
+
+        modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombreDeMateria(), materia.getAnio()});
     }
-    
+
 }
