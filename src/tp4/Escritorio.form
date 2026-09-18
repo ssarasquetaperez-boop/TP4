@@ -95,7 +95,7 @@
     </Menu>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="0"/>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="mnbPrincipal"/>
@@ -552,11 +552,11 @@
                               <Component id="txtFormInscripcionAlumno" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmbAlumnos" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="cmbMaterias" min="-2" pref="204" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cmbMaterias" pref="204" max="32767" attributes="0"/>
+                              <Component id="cmbAlumnos" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="47" max="32767" attributes="0"/>
+                          <EmptySpace pref="113" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -633,6 +633,9 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbAlumnosActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alumno&gt;"/>
                   </AuxValues>
@@ -644,6 +647,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Inscribirse"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFormInscripcionInscribirseActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnFormInscripcionSalir">
                   <Properties>
@@ -704,7 +710,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="cmbFormInscriptosAlumnos" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="cmbFormAlumnos" min="-2" pref="300" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -721,7 +727,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                          <Component id="cmbFormInscriptosAlumnos" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbFormAlumnos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblFormInscriptosMaterias" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -735,7 +741,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="cmbFormInscriptosAlumnos">
+                <Component class="javax.swing.JComboBox" name="cmbFormAlumnos">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
@@ -744,8 +750,11 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbFormAlumnosActionPerformed"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alumno&gt;"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblFormInscriptosMaterias">

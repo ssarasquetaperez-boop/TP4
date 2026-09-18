@@ -47,10 +47,18 @@ public class Alumno {
     public void setMaterias(HashSet<Materia> materias) {
         this.materias = materias;
     }
+    
+    public void agregarMaterias(Materia m){
+        materias.add(m);
+    }
+    public int cantidadMateria(){
+        return materias.size();
+    }
 
     @Override
     public String toString() {
         return numLegajo + "-" + apellido + "-" + nombre;
     }
+
 
 }

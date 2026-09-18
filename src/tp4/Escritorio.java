@@ -69,7 +69,7 @@ public class Escritorio extends javax.swing.JFrame {
         btnFormInscripcionSalir = new javax.swing.JButton();
         JIFformInscriptos = new javax.swing.JInternalFrame();
         pnlFormInscriptos = new javax.swing.JPanel();
-        cmbFormInscriptosAlumnos = new javax.swing.JComboBox<>();
+        cmbFormAlumnos = new javax.swing.JComboBox<>();
         lblFormInscriptosMaterias = new javax.swing.JLabel();
         txtFormInscriptosNumMaterias = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -86,7 +86,7 @@ public class Escritorio extends javax.swing.JFrame {
         mnuSalir = new javax.swing.JMenu();
         mitSalir = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -290,9 +290,11 @@ public class Escritorio extends javax.swing.JFrame {
         cmbMaterias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         cmbAlumnos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbAlumnos.addActionListener(this::cmbAlumnosActionPerformed);
 
         btnFormInscripcionInscribirse.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnFormInscripcionInscribirse.setText("Inscribirse");
+        btnFormInscripcionInscribirse.addActionListener(this::btnFormInscripcionInscribirseActionPerformed);
 
         btnFormInscripcionSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnFormInscripcionSalir.setText("Salir");
@@ -317,10 +319,10 @@ public class Escritorio extends javax.swing.JFrame {
                     .addComponent(txtFormInscripcionMateria)
                     .addComponent(txtFormInscripcionAlumno))
                 .addGap(67, 67, 67)
-                .addGroup(pnlFormInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGroup(pnlFormInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cmbMaterias, 0, 204, Short.MAX_VALUE)
+                    .addComponent(cmbAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         pnlFormInscripcionLayout.setVerticalGroup(
             pnlFormInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,7 +363,8 @@ public class Escritorio extends javax.swing.JFrame {
         JIFformInscriptos.setTitle("Formulario Inscriptos");
         JIFformInscriptos.setVisible(true);
 
-        cmbFormInscriptosAlumnos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbFormAlumnos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbFormAlumnos.addActionListener(this::cmbFormAlumnosActionPerformed);
 
         lblFormInscriptosMaterias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblFormInscriptosMaterias.setText("Materias ");
@@ -391,7 +394,7 @@ public class Escritorio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlFormInscriptosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFormInscriptosLayout.createSequentialGroup()
-                        .addComponent(cmbFormInscriptosAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbFormAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(100, 100, 100))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFormInscriptosLayout.createSequentialGroup()
                         .addComponent(btnJIFformInscriptosSalir)
@@ -403,7 +406,7 @@ public class Escritorio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(58, 58, 58)
-                .addComponent(cmbFormInscriptosAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbFormAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addGroup(pnlFormInscriptosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFormInscriptosMaterias)
@@ -576,8 +579,9 @@ public class Escritorio extends javax.swing.JFrame {
             alumnos.add(nuevo);
             JOptionPane.showMessageDialog(this,
                     "Alumno guardado exitosamente");
-            limpiarCampos();
             cmbAlumnos.addItem(nuevo);
+            cmbFormAlumnos.addItem(nuevo);
+            limpiarCampos();
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
@@ -622,8 +626,8 @@ public class Escritorio extends javax.swing.JFrame {
 
             materias.add(nueva);
             JOptionPane.showMessageDialog(this, "Materia guardada correctamente.");
-            limpiarCampos();
             cmbMaterias.addItem(nueva);
+            limpiarCampos();
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this,
@@ -720,6 +724,46 @@ public class Escritorio extends javax.swing.JFrame {
         JIFformInscriptos.setVisible(false);
     }//GEN-LAST:event_btnJIFformInscriptosSalirActionPerformed
 
+    private void btnFormInscripcionInscribirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormInscripcionInscribirseActionPerformed
+        // TODO add your handling code here:
+        Alumno seleccionAlumno = (Alumno) cmbAlumnos.getSelectedItem();
+        Materia seleccionMateria = (Materia) cmbMaterias.getSelectedItem();
+
+        if (seleccionAlumno == null || seleccionMateria == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Debe seleccionar 1 alumno y 1 materia",
+                    "Atencion",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int cantidad = seleccionAlumno.cantidadMateria();
+        seleccionAlumno.agregarMaterias(seleccionMateria);
+
+        if (seleccionAlumno.cantidadMateria() == cantidad) {
+            JOptionPane.showMessageDialog(this, "El alumno ya esta inscipto a esa materia",
+                    "Atencion",
+                    JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Inscripcion realizada correctamente");
+        }
+
+    }//GEN-LAST:event_btnFormInscripcionInscribirseActionPerformed
+
+    private void cmbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAlumnosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbAlumnosActionPerformed
+
+    private void cmbFormAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFormAlumnosActionPerformed
+        // TODO add your handling code here:
+        Alumno seleccionado = (Alumno) cmbFormAlumnos.getSelectedItem();
+        if (seleccionado != null) {
+            txtFormInscriptosNumMaterias.setText(seleccionado.cantidadMateria() + "");
+        } else {
+            txtFormInscriptosNumMaterias.setText("");
+        }
+
+    }//GEN-LAST:event_cmbFormAlumnosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -759,7 +803,7 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<Alumno> cmbAlumnos;
-    private javax.swing.JComboBox<String> cmbFormInscriptosAlumnos;
+    private javax.swing.JComboBox<Alumno> cmbFormAlumnos;
     private javax.swing.JComboBox<Materia> cmbMaterias;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JButton jButton5;
